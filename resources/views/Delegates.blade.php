@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="card shadow-lg p-4 border-0 animate__animated animate__fadeIn" style="border-radius: 15px;">
-    <h3 class="mb-3 text-success font-weight-bold">إضافة مندوب جديد</h3>
+    <h4 class="mb-3 text-success font-weight-bold">إضافة مندوب جديد</h4>
     <form>
         <div class="row">
             <div class="col-md-4 form-group">
@@ -31,7 +31,7 @@
 
     <hr>
 
-    <h3 class="mb-3 text-success font-weight-bold">قائمة المناديب</h3>
+    <h4 class="mb-3 text-success font-weight-bold">قائمة المناديب</h4>
     <div class="table-responsive">
         <table class="table table-hover text-center animate__animated animate__fadeInUp">
             <thead class="text-white" style="background: linear-gradient(45deg, #28a745, #218838); border-radius: 10px;">

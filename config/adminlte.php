@@ -366,9 +366,9 @@ return [
             'submenu' => [
                 [
                     'text' => 'المناديب',
-                    'url' => '#',
+                    'url' => 'Delegates-create',
                     'icon' => 'fas fa-user',
-                    'label' => 4,
+                    'label' =>  4,
                     'label_color' => 'success',    
                 ],
                 

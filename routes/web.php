@@ -26,3 +26,7 @@ Route::get('/mrz-passprt-extractor', function () {
 Route::get('/worker-create', function () {
     return view('user-create'); // This loads resources/views/dashboard.blade.php
 })->name('worker-create');
+
+Route::get('/Delegates-create', function () {
+    return view(view: 'Delegates'); // This loads resources/views/dashboard.blade.php
+})->name(name: 'Delegates-create');
