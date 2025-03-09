@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DelegateController;
+use App\Models\Delegate;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,10 +27,11 @@ Route::get('/mrz-passprt-extractor', function () {
     return view('mrz-extractor'); // This loads resources/views/dashboard.blade.php
 })->name('mrz-passprt-extractor');
 
-Route::get('/worker-create', function () {
-    return view('user-create'); // This loads resources/views/dashboard.blade.php
-})->name('worker-create');
 
-Route::get('/Delegates-create', function () {
-    return view(view: 'Delegates'); // This loads resources/views/dashboard.blade.php
-})->name(name: 'Delegates-create');
+Route::get('/Delegates-create', [DelegateController::class,'index'])->name(name: 'Delegates-create');
+
+Route::post('/delegates', action: [DelegateController::class, 'store'])->name('delegates.store');
+
+Route::get('/worker-create', [CustomerController::class, 'index'])->name('customer.indes');
+
+Route::post('/customer-add',[CustomerController::class, 'create'])->name(name: 'customer.create');

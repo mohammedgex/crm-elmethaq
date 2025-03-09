@@ -9,25 +9,24 @@
 @section('content')
 <div class="card shadow-lg p-4 border-0 animate__animated animate__fadeIn" style="border-radius: 15px;">
     <h4 class="mb-3 text-success font-weight-bold">إضافة مندوب جديد</h4>
-    <form>
-        <div class="row">
-            <div class="col-md-4 form-group">
-                <label class="font-weight-bold">اسم المندوب</label>
-                <input type="text" class="form-control " placeholder="أدخل اسم المندوب">
-            </div>
-            <div class="col-md-4 form-group">
-                <label class="font-weight-bold">رقم الهاتف</label>
-                <input type="text" class="form-control " placeholder="أدخل رقم الهاتف">
-            </div>
-            <div class="col-md-4 form-group">
-                <label class="font-weight-bold">الرقم القومي</label>
-                <!-- <input type="text" class="form-control" placeholder="أدخل رقم الهاتف"> -->
-                <input type="text" class="form-control " placeholder="أدخل الرقم القومي">
-            </div>
+   <form action="{{ route('delegates.store') }}" method="POST">
+    @csrf
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label class="font-weight-bold">اسم المندوب</label>
+            <input type="text" class="form-control" name="name" placeholder="أدخل اسم المندوب" required>
         </div>
-        <button type="submit" class="btn btn-success mt-3 px-4 shadow-sm" style="height: 50px;width: 200px;border-radius: 10px;background: linear-gradient(135deg, #28a745, #218838); /* تدرج أخضر */
-">إضافة مندوب</button>
-    </form>
+        <div class="col-md-4 form-group">
+            <label class="font-weight-bold">رقم الهاتف</label>
+            <input type="text" class="form-control" name="phone" placeholder="أدخل رقم الهاتف" required>
+        </div>
+        <div class="col-md-4 form-group">
+            <label class="font-weight-bold">الرقم القومي</label>
+            <input type="text" class="form-control" name="card_id" placeholder="أدخل الرقم القومي" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-3 px-4 shadow-sm">إضافة مندوب</button>
+</form>
 
     <hr>
 
@@ -39,34 +38,26 @@
                     <th>#</th>
                     <th>اسم المندوب</th>
                     <th>رقم الهاتف</th>
-                    <th>البريد الإلكتروني</th>
+                    <th>الرقم القومي</th>
                     <th>الإجراءات</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="table-light">
-                    <td>1</td>
-                    <td>محمد أحمد</td>
-                    <td>01012345678</td>
-                    <td>mohamed@example.com</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-success shadow-sm"><i class="fas fa-edit"></i> تعديل</button>
-                        <button class="btn btn-sm btn-outline-danger shadow-sm"><i class="fas fa-trash"></i> حذف</button>
-                        <button class="btn btn-sm btn-outline-primary shadow-sm"><i class="fas fa-users"></i> عرض العملاء</button>
-                    </td>
-                </tr>
-                <tr class="table-light">
-                    <td>2</td>
-                    <td>أحمد علي</td>
-                    <td>01198765432</td>
-                    <td>ahmed@example.com</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-success shadow-sm"><i class="fas fa-edit"></i> تعديل</button>
-                        <button class="btn btn-sm btn-outline-danger shadow-sm"><i class="fas fa-trash"></i> حذف</button>
-                        <button class="btn btn-sm btn-outline-primary shadow-sm"><i class="fas fa-users"></i> عرض العملاء</button>
-                    </td>
-                </tr>
-            </tbody>
+           <tbody>
+    @foreach($delegates as $index => $delegate)
+    <tr class="table-light">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ $delegate->name }}</td>
+        <td>{{ $delegate->phone }}</td>
+                <td>{{ $delegate->card_id }}</td>
+
+                <td>
+            <button class="btn btn-sm btn-outline-success shadow-sm"><i class="fas fa-edit"></i> تعديل</button>
+            <button class="btn btn-sm btn-outline-danger shadow-sm"><i class="fas fa-trash"></i> حذف</button>
+            <button class="btn btn-sm btn-outline-primary shadow-sm"><i class="fas fa-users"></i> عرض العملاء</button>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
         </table>
     </div>
 </div>

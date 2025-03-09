@@ -17,19 +17,21 @@
         </ul>
 
         <div class="tab-content mt-3">
-            <!-- التفاصيل الشخصية -->
+            <form action="{{ route('customer.create') }}" method="Post">
+                @csrf
+                <!-- التفاصيل الشخصية -->
             <div id="personalInfo" class="tab-pane fade show active">
-                          <!-- القسم: المعلومات الأساسية -->
+                        <!-- القسم: المعلومات الأساسية -->
     <div class="section-container">
         <h5 class="text-success fw-bold mb-3">المعلومات الأساسية</h5>
         <div class="row">
             <div class="col-md-6">
                 <label class="fw-bold text-success ">الاسم الكامل</label>
-                <input type="text" class="form-control border-success bold-input" style="height: 60px;" placeholder="أدخل الاسم الكامل">
+                <input type="text" class="form-control border-success bold-input" style="height: 60px;" placeholder="أدخل الاسم الكامل" name="name_ar">
             </div>
             <div class="col-md-6">
                 <label class="fw-bold text-success">رقم الهاتف</label>
-                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم الهاتف">
+                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم الهاتف" name="phone">
             </div>
         </div>
     </div>
@@ -40,11 +42,11 @@
         <div class="row">
             <div class="col-md-6">
                 <label class="fw-bold text-success">الرقم القومي</label>
-                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل الرقم القومي">
+                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل الرقم القومي" name="card_id">
             </div>
             <div class="col-md-6">
                 <label class="fw-bold text-success">رقم الرخصة</label>
-                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم الرخصة">
+                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم الرخصة" name="license_id">
             </div>
         </div>
     </div>
@@ -55,11 +57,11 @@
         <div class="row">
             <div class="col-md-6">
                 <label class="fw-bold text-success">رقم هاتف آخر</label>
-                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم هاتف آخر">
+                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم هاتف آخر" name="phone_two">
             </div>
             <div class="col-md-6">
                 <label class="fw-bold text-success">رقم التأشيرة</label>
-                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم التأشيرة">
+                <input type="text" class="form-control border-success fw-bold" style="height: 60px;" placeholder="أدخل رقم التأشيرة" name="visa_id">
             </div>
         </div>
     </div>
@@ -70,15 +72,16 @@
         <div class="row">
             <div class="col-md-6">
                 <label class="fw-bold text-success">اختر المندوب</label>
-                <select class="form-control border-success fw-bold" style="height: 60px;">
+                <select class="form-control border-success fw-bold" style="height: 60px;" name="delegate_id">
                     <option value="">اختر المندوب</option>
-                    <option value="1">مندوب 1</option>
-                    <option value="2">مندوب 2</option>
+                    @foreach ($delegates as $delegate )
+                    <option value="{{ $delegate->id }}">{{ $delegate->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6">
                 <label class="fw-bold text-success">اختر المجموعة</label>
-                <select class="form-control border-success fw-bold" style="height: 60px;">
+                <select class="form-control border-success fw-bold" style="height: 60px;" >
                     <option value="">اختر المجموعة</option>
                     <option value="A">المجموعة A</option>
                     <option value="B">المجموعة B</option>
@@ -101,7 +104,12 @@
             </div>
         </div>
     </div>
-            </div>
+</div>
+
+        <input class="btn btn-success btn-block mt-3" type="submit" value="حفظ البيانات"/>
+
+            </form>
+
 
             <!-- تفاصيل جواز السفر -->
             <div id="passportDetails" class="tab-pane fade">
@@ -191,7 +199,7 @@
             </div>
         </div>
 
-        <button class="btn btn-success btn-block mt-3">حفظ البيانات</button>
+        <!-- <button class="btn btn-success btn-block mt-3">حفظ البيانات</button> -->
     </div>
 </div>
 
