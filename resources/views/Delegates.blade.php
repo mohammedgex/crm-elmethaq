@@ -52,7 +52,7 @@
 
                 <td>
             <button class="btn btn-sm btn-outline-success shadow-sm"><i class="fas fa-edit"></i> تعديل</button>
-            <button class="btn btn-sm btn-outline-danger shadow-sm"><i class="fas fa-trash"></i> حذف</button>
+            <button class="btn btn-sm btn-outline-danger shadow-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"><i class="fas fa-trash"></i> حذف</button>
             <button class="btn btn-sm btn-outline-primary shadow-sm"><i class="fas fa-users"></i> عرض العملاء</button>
         </td>
     </tr>
@@ -62,10 +62,39 @@
     </div>
 </div>
 
+<!-- نافذة تأكيد الحذف -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content animate__animated animate__fadeInDown">
+            <!-- رأس النافذة -->
+            <div class="modal-header border-0 text-center d-block">
+                <h5 class="modal-title fw-bold text-danger">
+                    <i class="fas fa-exclamation-triangle fa-2x"></i>
+                    <br> تأكيد الحذف
+                </h5>
+            </div>
+
+            <!-- محتوى النافذة -->
+            <div class="modal-body text-center">
+                <p class="fs-5">هل أنت متأكد أنك تريد حذف هذا العنصر؟</p>
+            </div>
+
+            <!-- أزرار التأكيد والإلغاء -->
+            <div class="modal-footer border-0 d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">إلغاء</button>
+                <button type="submit" class="btn btn-danger px-4">نعم، احذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 @stop
 
 @section('css')
+
 <style>
 /* تحسين إدخال البيانات */
 .form-control {
@@ -107,5 +136,6 @@
 @stop
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 @stop
