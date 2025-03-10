@@ -28,10 +28,10 @@ Route::get('/mrz-passprt-extractor', function () {
 })->name('mrz-passprt-extractor');
 
 
-Route::get('/Delegates-create', [DelegateController::class, 'index'])->name(name: 'Delegates.create');
+Route::get('/Delegates-create/{id?}', [DelegateController::class, 'index'])->name(name: 'Delegates.create');
+Route::post('/delegates',  [DelegateController::class, 'store'])->name('delegates.store');
+Route::post('/delegates/edit/{id}',  [DelegateController::class, 'edit'])->name('delegates.edit');
 Route::delete('/Delegates-delete/{id}', [DelegateController::class, 'delete'])->name('Delegates.delete');
-
-Route::post('/delegates', action: [DelegateController::class, 'store'])->name('delegates.store');
 
 Route::get('/worker-create', [CustomerController::class, 'index'])->name('customer.indes');
 
